@@ -1,57 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './Home';
-import About from './About';
-import Listing from './Listing';
-import Login from './Login';
-import Register from './Register';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import navbar from './Navbar';
+import React from "react";
+import "./App.css";
+import Home from "./Views/Home";
+import About from "./Views/About";
+import Listing from "./Views/Listing";
+import Login from "./Auth/Login";
+import Register from "./Auth/Register";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./Layout/Navbar";
 
 class App extends React.Component {
-
   render() {
     return (
       <div className="App">
-        
         <Router>
-      
-
-         
-
-            {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <Route path="/listing">
-                <Listing />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-            </Router>
-          </div>
-        
-        
-      
-      
-      
-    
+          <Navbar />
+          <Switch>
+            <Route path="/about" component={About} />
+            <Route path="/login/" component={Login} />
+            <Route path="/register/" component={Register} />
+            <Route path="/listing" component={Listing} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
